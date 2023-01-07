@@ -1,0 +1,19 @@
+{
+  "name": "notificaton-component",
+  "version": "1.0.0",
+  "description": "react component",
+  "main": "index.js",
+  "author": "Renzo Navarro",
+  "license": "MIT",
+  "scripts": {
+    "dev": "parcel src/index.html"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.8.2",
+    "process": "^0.11.10"
+  }
+}
