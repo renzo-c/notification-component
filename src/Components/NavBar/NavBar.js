@@ -2,6 +2,7 @@ import React from "react";
 import { Box } from "@mui/material";
 import logoDark from "../../assets/images/logo-dark.png";
 import Link from "../Link";
+import Notifications from "../Notifications/Notifications";
 
 const NavBar = () => {
   return (
@@ -9,6 +10,9 @@ const NavBar = () => {
       <Logo />
       <Menu>
         <Link label="Link 1" />
+        <Link>
+          <Notifications />
+        </Link>
       </Menu>
     </Box>
   );
@@ -28,7 +32,7 @@ const Menu = ({ children }) => {
       return React.cloneElement(child, { ...child.props, key: index });
     }
   });
-  return <Box className={menuStyles}>{links}</Box>;
+  return <Box sx={menuStyles}>{links}</Box>;
 };
 
 const boxStyles = {
