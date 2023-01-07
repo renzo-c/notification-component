@@ -1,0 +1,15 @@
+.input-border {
+    border-color: white !important;
+  }
+  
+  .inputLabel {
+    color: white !important;
+  }
+
+.input-border:hover {
+  border-color: gray !important;
+}
+
+.inputLabel:hover {
+  color: gray !important;
+}
