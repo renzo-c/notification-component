@@ -1,15 +1,17 @@
 import React from "react";
-import { Button } from "@mui/material";
-import "./link.css";
+import { Box, Link as MuiLink } from "@mui/material";
+import { containerStyles, linkStyles } from "./styles";
 
 const Link = ({ children, label = "Link" }) => {
   if (children) {
     return children;
   }
   return (
-    <Button className="input-border inputLabel" variant="outlined">
-      {label}
-    </Button>
+    <Box sx={containerStyles}>
+      <MuiLink href="#" underline="always" sx={linkStyles}>
+        {label}
+      </MuiLink>
+    </Box>
   );
 };
 

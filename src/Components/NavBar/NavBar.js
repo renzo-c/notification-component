@@ -9,7 +9,9 @@ const NavBar = () => {
     <Box sx={boxStyles}>
       <Logo />
       <Menu>
-        <Link label="Link 1" />
+        <Link label="Home" />
+        <Link label="Services" />
+        <Link label="About us" />
         <Link>
           <Notifications />
         </Link>
