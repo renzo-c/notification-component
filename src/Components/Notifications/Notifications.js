@@ -1,25 +1,44 @@
 import React from "react";
 import { Box, Tooltip, Badge, IconButton, Menu } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-import TabPanel from "./subcomponents/TabPanel";
+import TabsGroup from "./subcomponents/TabsGroup";
 
 const Notifications = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [notifications, setNotifications] = React.useState(["1"]);
 
   const handleOpenUserMenu = (event) => {
-    console.log(event.currentTarget);
     setAnchorEl(event.currentTarget);
   };
 
   const handleCloseUserMenu = () => {
-    console.log("close");
     setAnchorEl(null);
   };
 
+  const data = [
+    {
+      tabName: "News",
+      searchPlaceholder: "Search new notifications",
+      dataRangeLabel: "From last 30 days",
+      tabPanel: {
+        list: [],
+      },
+      fetchCb: () => alert("fechtCb"),
+    },
+    {
+      tabName: "Archived",
+      searchPlaceholder: "Search archived notifications",
+      dataRangeLabel: "From last 30 days",
+      tabPanel: {
+        list: [],
+      },
+      archiveCb: () => alert("archiveCb"),
+    },
+  ];
+
   return (
     <Box sx={notificationsStyles}>
-      <Tooltip title="Notifications">
+      <Tooltip title="Notifications" placement="bottom-start">
         <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
           <Badge badgeContent={notifications.length} color="error">
             <NotificationsIcon sx={{ color: "white" }} />
@@ -43,7 +62,7 @@ const Notifications = () => {
         onClose={handleCloseUserMenu}
         MenuListProps={{ style: { padding: "0px" } }}
       >
-        <TabPanel />
+        <TabsGroup data={data} />
       </Menu>
     </Box>
   );
