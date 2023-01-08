@@ -3,7 +3,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { a11yProps } from "./helperFunctions";
+import { a11yProps } from "../helperFunctions";
+import TabContent from "./TabContent";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -17,9 +18,7 @@ const TabPanel = (props) => {
       {...other}
     >
       {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
+        <Box sx={{ padding: "5px 15px 5px 15px" }}>{children}</Box>
       )}
     </div>
   );
@@ -47,7 +46,7 @@ const TabsGroup = ({ data }) => {
 
   return (
     <Box sx={{ width: "100%" }}>
-      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+      <Box sx={tabContainerStyles}>
         <Tabs
           value={value}
           onChange={handleChange}
@@ -67,12 +66,14 @@ const TabsGroup = ({ data }) => {
       </Box>
       {data.map((tab, key) => (
         <TabPanel key={key} value={value} index={key}>
-          {tab.tabName}
+          <TabContent {...tab.tabContent} />
         </TabPanel>
       ))}
     </Box>
   );
 };
+
+const tabContainerStyles = { borderBottom: 1, borderColor: "divider" };
 
 const tabStyle = {
   width: "50%",

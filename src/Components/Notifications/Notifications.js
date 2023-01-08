@@ -2,6 +2,12 @@ import React from "react";
 import { Box, Tooltip, Badge, IconButton, Menu } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import TabsGroup from "./subcomponents/TabsGroup";
+import {
+  menuStyles,
+  iconButtonStyles,
+  iconStyles,
+  notificationsStyles,
+} from "./styles";
 
 const Notifications = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -18,49 +24,50 @@ const Notifications = () => {
   const data = [
     {
       tabName: "News",
-      searchPlaceholder: "Search new notifications",
-      dataRangeLabel: "From last 30 days",
-      tabPanel: {
-        list: [],
+      tabContent: {
+        searchPlaceholder: "Search new notifications...",
+        dataRangeLabel: "From last 30 days",
+        notifications: [],
+        fetchCb: () => alert("fechtCb"),
+        archiveCb: () => alert("archiveCb"),
       },
-      fetchCb: () => alert("fechtCb"),
     },
     {
       tabName: "Archived",
-      searchPlaceholder: "Search archived notifications",
-      dataRangeLabel: "From last 30 days",
-      tabPanel: {
-        list: [],
+      tabContent: {
+        searchPlaceholder: "Search archived notifications...",
+        dataRangeLabel: "From last 30 days",
+        notifications: [],
+        fetchCb: () => alert("fechtCb"),
       },
-      archiveCb: () => alert("archiveCb"),
     },
   ];
 
   return (
     <Box sx={notificationsStyles}>
       <Tooltip title="Notifications" placement="bottom-start">
-        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+        <IconButton onClick={handleOpenUserMenu} sx={iconButtonStyles}>
           <Badge badgeContent={notifications.length} color="error">
-            <NotificationsIcon sx={{ color: "white" }} />
+            <NotificationsIcon sx={iconStyles} />
           </Badge>
         </IconButton>
       </Tooltip>
       <Menu
-        sx={{ mt: "45px" }}
         id="menu-appbar"
+        sx={menuStyles}
         anchorEl={anchorEl}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
+        anchorOrigin={originReference}
         keepMounted
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
+        transformOrigin={originReference}
         open={Boolean(anchorEl)}
         onClose={handleCloseUserMenu}
-        MenuListProps={{ style: { padding: "0px" } }}
+        MenuListProps={{
+          style: {
+            padding: "0px",
+            border: "1px solid black",
+            borderRadius: "5px",
+          },
+        }}
       >
         <TabsGroup data={data} />
       </Menu>
@@ -68,9 +75,9 @@ const Notifications = () => {
   );
 };
 
-const notificationsStyles = {
-  padding: ".3em",
-  mx: "5px",
+const originReference = {
+  vertical: "top",
+  horizontal: "right",
 };
 
 export default Notifications;
