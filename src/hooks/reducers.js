@@ -1,7 +1,7 @@
-import React, { createContext, useContext, useReducer } from "react";
-import { SEARCH_NOTIFICATION, CHANGE_NOTIFICATION_STATUS } from "./constants";
-import notifications from "./Components/DropdownList/fakeData";
-import { changeStatus } from "./helperFunctions";
+import {
+  SEARCH_NOTIFICATION,
+  CHANGE_NOTIFICATION_STATUS,
+} from "../utils/constants";
 
 const listReducer = (state, action) => {
   switch (action.type) {

@@ -5,7 +5,7 @@ const SearchBar = ({ cb, searchPlaceholder }) => {
   const onSearch = (e) => {
     e.preventDefault();
     const term = e.target.value;
-    cb && cb();
+    cb && cb(term);
   };
   return (
     <Paper elevation={0} sx={paperStyles}>

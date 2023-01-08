@@ -12,7 +12,7 @@ const initialState = {
   originalList: [...notifications],
 };
 
-const NotificationContext = createContext;
+const NotificationContext = createContext();
 
 const NotificationProvider = ({ children }) => {
   const [state, dispatch] = useReducer(listReducer, initialState);
@@ -38,13 +38,14 @@ const useNotification = () => {
 
 const onFilterNotifications = (dispatch, originalList, searchTerm) => {
   let filteredNotifications;
-  if ((searchTerm = "")) {
+  if (searchTerm === "") {
     filteredNotifications = originalList;
   } else {
     filteredNotifications = originalList.filter(
       (n) => n.title.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1
     );
   }
+
   try {
     dispatch({
       type: SEARCH_NOTIFICATION,
@@ -80,7 +81,7 @@ const onChangeStatus = (
   }
 };
 
-return {
+export {
   NotificationProvider,
   useNotification,
   onFilterNotifications,

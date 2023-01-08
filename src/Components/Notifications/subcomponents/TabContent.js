@@ -1,11 +1,13 @@
 import { List, Typography } from "@mui/material";
 import React from "react";
 import SearchBar from "../../SearchBar/SearchBar";
+import Item from "./Item";
 
 const TabContent = ({
   searchPlaceholder,
   dataRangeLabel,
   notifications,
+  searchCb,
   archiveCb,
   fetchCb,
 }) => {
@@ -14,7 +16,7 @@ const TabContent = ({
       <Typography as="div" variant="caption" align="center" color="GrayText">
         {dataRangeLabel}
       </Typography>
-      <SearchBar searchPlaceholder={searchPlaceholder} />
+      <SearchBar searchPlaceholder={searchPlaceholder} cb={searchCb} />
       <List sx={listStyles}>
         {notifications.length ? (
           notifications.map((notification) => (
@@ -33,6 +35,12 @@ const listStyles = {
   maxWidth: 360,
   bgcolor: "background.paper",
   paddingTop: "0px",
+  maxHeight: "500px",
+  scrollbarWidth: 0,
+  '&::-webkit-scrollbar': {
+    display: 'none'
+  },
+  overflow: "auto",
 };
 
 const emptyListStyles = {

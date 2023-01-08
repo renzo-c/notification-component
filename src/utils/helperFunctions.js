@@ -1,3 +1,11 @@
+const textClamp = (str, numChars) => {
+  if (str.length < numChars) {
+    return str;
+  }
+  const newStr = str.substring(0, numChars) + "...";
+  return newStr;
+};
+
 const changeStatus = (arr, id, newStatus) => {
   const newArr = [];
   arr.forEach((n) => {
@@ -10,4 +18,4 @@ const changeStatus = (arr, id, newStatus) => {
   return newArr;
 };
 
-export { changeStatus };
+export { changeStatus, textClamp };
