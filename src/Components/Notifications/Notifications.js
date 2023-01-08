@@ -66,6 +66,7 @@ const Notifications = () => {
             padding: "0px",
             border: "1px solid black",
             borderRadius: "5px",
+            width: '300px'
           },
         }}
       >

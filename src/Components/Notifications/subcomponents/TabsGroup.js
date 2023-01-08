@@ -48,16 +48,17 @@ const TabsGroup = ({ data }) => {
     <Box sx={{ width: "100%" }}>
       <Box sx={tabContainerStyles}>
         <Tabs
+          variant="fullWidth"
           value={value}
           onChange={handleChange}
           aria-label="tab container"
-          sx={{ width: "100%" }}
-          TabIndicatorProps={{ style: { backgroundColor: "#333" } }}
+          TabIndicatorProps={{
+            style: { backgroundColor: "#333", minWidth: "50%" },
+          }}
         >
           {data.map((tab, key) => (
             <Tab
               key={key}
-              sx={tabStyle}
               label={<TabLabel label={tab.tabName} />}
               {...a11yProps(key)}
             />
@@ -73,7 +74,10 @@ const TabsGroup = ({ data }) => {
   );
 };
 
-const tabContainerStyles = { borderBottom: 1, borderColor: "divider" };
+const tabContainerStyles = {
+  borderBottom: 1,
+  borderColor: "divider",
+};
 
 const tabStyle = {
   width: "50%",

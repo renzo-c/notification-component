@@ -11,7 +11,7 @@ const TabContent = ({
 }) => {
     console.log("render content")
   return (
-    <div style={{ width: 300 }}>
+    <div>
       <Typography as="div" variant="caption" align="center" color="GrayText">
         {dataRangeLabel}
       </Typography>
