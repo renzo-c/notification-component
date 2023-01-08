@@ -2,6 +2,7 @@ import React from "react";
 import { Box, Tooltip, Badge, IconButton, Menu } from "@mui/material";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import TabsGroup from "./subcomponents/TabsGroup";
+import notifications from "./fakeData";
 import {
   menuStyles,
   iconButtonStyles,
@@ -27,7 +28,7 @@ const Notifications = () => {
       tabContent: {
         searchPlaceholder: "Search new notifications...",
         dataRangeLabel: "From last 30 days",
-        notifications: [],
+        notifications: notifications,
         fetchCb: () => alert("fechtCb"),
         archiveCb: () => alert("archiveCb"),
       },
@@ -37,7 +38,7 @@ const Notifications = () => {
       tabContent: {
         searchPlaceholder: "Search archived notifications...",
         dataRangeLabel: "From last 30 days",
-        notifications: [],
+        notifications: notifications,
         fetchCb: () => alert("fechtCb"),
       },
     },
@@ -66,7 +67,7 @@ const Notifications = () => {
             padding: "0px",
             border: "1px solid black",
             borderRadius: "5px",
-            width: '300px'
+            width: "300px",
           },
         }}
       >
