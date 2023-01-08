@@ -2,7 +2,6 @@
   "name": "notificaton-component",
   "version": "1.0.0",
   "description": "react component",
-  "main": "index.js",
   "author": "Renzo Navarro",
   "license": "MIT",
   "scripts": {
