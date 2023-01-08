@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "parcel": "^2.8.2",
+    "parcel-bundler": "^1.12.5",
     "process": "^0.11.10"
   }
 }
