@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import logoDark from "../../assets/images/logo-dark.png";
 import Link from "../Link";
 import Notifications from "../Notifications/Notifications";
+import { boxStyles, menuStyles, linkStyles, noLinkStyles } from "./styles";
 
 const NavBar = () => {
   return (
@@ -11,10 +12,8 @@ const NavBar = () => {
       <Menu>
         <Link label="Home" />
         <Link label="Services" />
-        <Link label="About us" />
-        <Link>
-          <Notifications />
-        </Link>
+        {/* <Link label="About Us" /> */}
+        <Notifications />
       </Menu>
     </Box>
   );
@@ -29,27 +28,23 @@ const Logo = () => {
 };
 
 const Menu = ({ children }) => {
-  const links = React.Children.map(children, (child, index) => {
+  const links = [];
+  const noLinks = [];
+
+  React.Children.forEach(children, (child, index) => {
     if (child.type.name === "Link") {
-      return React.cloneElement(child, { ...child.props, key: index });
+      links.push(React.cloneElement(child, { ...child.props, key: index }));
+    }
+    if (child.type.name !== "Link") {
+      noLinks.push(React.cloneElement(child, { ...child.props, key: index }));
     }
   });
-  return <Box sx={menuStyles}>{links}</Box>;
-};
-
-const boxStyles = {
-  backgroundColor: "black",
-  height: "60px",
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "center",
-  py: ".3em",
-  px: ".9em",
-};
-
-const menuStyles = {
-  display: "flex",
-  justifyContent: "space-around",
+  return (
+    <Box sx={menuStyles}>
+      <Box sx={linkStyles}>{links}</Box>
+      <Box sx={noLinkStyles}>{noLinks}</Box>
+    </Box>
+  );
 };
 
 export default NavBar;

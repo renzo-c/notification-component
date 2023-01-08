@@ -9,7 +9,6 @@ const TabContent = ({
   archiveCb,
   fetchCb,
 }) => {
-    console.log("render content")
   return (
     <div>
       <Typography as="div" variant="caption" align="center" color="GrayText">
