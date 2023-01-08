@@ -25,6 +25,7 @@ const inputProps = {
   style: {
     margin: "0px",
     padding: "8px 8px",
+    color: "gray",
   },
 };
 
